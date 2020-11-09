@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content_title %}{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/slider.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="{{ SITEURL }}/theme/js/slider.js"></script>
+
+<div id='featured'>
+    <ul class='ui-tabs-nav'>
+        {% for article in dates[:4] %}
+        <li class='ui-tabs-nav-item ui-tabs-selected' id='nav-fragment-{{ loop.index0 }}'>
+            <a href='#fragment-{{ loop.index0 }}'>
+                <img src='{{ article.image }}' alt='{{ article.title }}' />
+                <span>{{ article.title }}</span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    {% for article in dates[:4] %}
+    <div id='fragment-{{ loop.index0 }}' class='ui-tabs-panel'>
+        <img src='{{ article.image }}' alt='{{ article.title }}' />
+        <div class='info'>
+            <h2>
+                <a href='{{ article.url }}'>{{ article.title }}</a>
+            </h2>
+            <p> {{ article.content|striptags|truncate(100) }}</p>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+<center><a href='archives.html'>Pročitajte starije vesti</a></center>
+
+<h2>Šta je Perina geometrija?</h2>
+<p>Nastavljajući pionirske korake Lobačevskog, koji je prvi uvideo da postoje geometrije drugačije od Euklidske, Pera je
+    uočio da je u geometriji fluida, iliti tečnih masa, svaki ugao prav. Na osnovu tog zaključka on je shvatio da
+    postoje alternativni načini za rešavanje problema svih prirodnih nauka počev od rasporeda kolinearnih tačaka, pa sve
+    do Teorije relativiteta. Uvideo je Ajnštajnovu grešku i smatra se da će ova, malo istražena, grana geometrije rešiti
+    viševekovne misterije: postojanje Boga, ubistva Kenedija i privatizacije u Slovačkoj.</p>
+
+<div class="fb-like" data-href="http://facebook.com/geometrija" data-send="true" data-width="450"
+    data-show-faces="true"></div>
+{% endblock content %}

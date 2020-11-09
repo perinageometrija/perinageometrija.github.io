@@ -1,0 +1,143 @@
+﻿
+<!-- saved from url=(0064)http://www.cs.laurentian.ca/badams/numeric/javascript/bisect.htm -->
+<html><head>
+    <style>table  {border: 0; } td {border:0;} tr {border:0;} 
+    .b {border:1px solid black}
+    </style>
+<script language="JavaScript">
+
+// JavaScript by B.G. Adams, Department of Mathematics and
+// Computer Science, Laurentian University.
+
+
+function writeTableLinepi(n, a, c, b)
+{
+   with (rz)
+   {
+      rz.append("<tr class='b'>");
+      rz.append("<td class='b'>" + n);
+      rz.append("<td class='b'>" + a);
+      rz.append("<td class='b'>" + c);
+      rz.append("<td class='b'>" + b);
+   }
+}
+
+
+function writeDocHeadpi(expression)
+{
+rz.empty();
+   with (rz)
+   {
+      rz.append("<table border=1>");
+      rz.append("<tr class='b'>");
+      rz.append("<th colspan=4 class='b'>" + expression + " = 0");
+      rz.append("<tr class='b'>");
+      rz.append("<th class='b'>n");
+      rz.append("<th class='b'>a");
+      rz.append("<th class='b'>mid");
+      rz.append("<th class='b'>b");
+   }
+}
+
+
+function writeDocEndpi()
+{
+   with (rz)
+   {
+      rz.append("</table>");
+   }
+}
+
+function sign(x)
+{
+   if (x >= 0) return 1; else return -1;
+}
+
+function iteratepi(param, fexpr, x0, x1, iter1, iter2)
+{
+   var t;
+     fexpr = fexpr.replace("ln", "log");
+     var f = function(x){var parser = math.parser();
+				  parser.set('x', x);
+				  var res = parser.eval(fexpr);
+				  return res;};
+ 
+   var a = parseFloat(x0); // this is important
+   var b = parseFloat(x1);
+   var c;
+   
+   var ya, yb, yc;
+   
+   ya = f(a);
+   yb = f(b);
+   var old=0;
+   writeDocHeadpi(fexpr);
+
+   var i;
+   for (i = 1; i <= iter2; i++)
+   {
+      c = a + 0.5*(b - a);
+      yc = f(c);
+       writeTableLinepi(i,a,c,b);
+       if (Math.abs(yc-old)<=iter1) break;
+      
+      if (yc == 0)
+      {
+         a = c;
+         b = c;
+         break;
+      }
+      
+      if (sign(yb) == sign(yc))
+      {
+         b = c;        // next interval is the left half
+         yb = yc;
+      }
+      else
+      {
+         a = c;        // next interval is the right half
+         ya = yc;
+      }
+   }
+   writeDocEndpi();
+}
+</script>
+</head>
+<body>
+
+<form>
+<table border="2">
+
+<tbody><tr>
+<td><i>f(x)</i>
+</td><td><input type="text" name="expr" value="" size="30">
+
+</td></tr><tr>
+<td>Leva granica
+</td><td><input type="text" name="x0" value="0">
+
+</td></tr><tr>
+<td>Desna granica
+</td><td><input type="text" name="x1" value="1">
+
+</td></tr><tr>
+<td>ε
+</td><td><input type="text" name="iter1" value="0.001">
+
+</td></tr><tr>
+<td>Broj iteracija
+</td><td><input type="text" name="iter2" value="15">
+
+
+</td></tr><tr>
+<td colspan="2" align="center">
+<input type="button" value="Računaj" onclick="iteratepi(&#39;x&#39;, this.form.expr.value, this.form.x0.value, this.form.x1.value, this.form.iter1.value, this.form.iter2.value)">
+
+</td></tr></tbody></table>
+
+</form>
+<div id="rz"></div>
+
+  <script>
+rz = jQuery('#rz');</script>
+</body></html>

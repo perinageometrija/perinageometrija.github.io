@@ -1,0 +1,122 @@
+﻿<html><head>
+		 <!--<script type="text/javascript" src="jquery.js">jQuery.noConflict();</script>-->
+		<script type="text/javascript" src="math.js"> </script>
+		<title>Numerička</title>
+		<style> 
+		#ispis td {border:1px solid black; padding:2px;}
+		input {width:100%;height:30px; margin-bottom:5px; padding-left:5px; border:none; border-bottom:1px solid rgb(3,125,166);}
+		</style>
+	</head>
+<body class="holo-light">
+<div class="edittext">
+</div><table width="300px	">
+<tbody><tr> <td><i>f(x)</i></td> <td><input type="text" id="unos1"> </td></tr>
+<tr> <td></td><td><input type="button" id="teraj2" value="Računaj" width="100%" style="border:none;"> </td></tr>
+</tbody></table>
+   <canvas id="canvas" width="270" height="250">&nbsp;</canvas>
+<p id="opis"> &nbsp;</p>
+<div id="limesi"> &nbsp;</div><div id="desc"></div><iframe id="log" width="100%" style="border:none; border-bottom: 1px solid gray; padding-bottom:10px;"></iframe>
+
+
+
+
+	<script>
+			var unos;
+			var epsilon;
+			var brojcifara;
+			var x0 ;
+jQuery( "#teraj2" ).click(function() {
+			
+function draw() {
+ var canvas = document.getElementById("canvas");
+ if (null==canvas || !canvas.getContext) return;
+
+ var axes={}, ctx=canvas.getContext("2d");
+  ctx.clearRect ( 0 , 0 , canvas.width, canvas.height );
+ axes.x0 = .5 + .5*canvas.width;  // x0 pixels from left to x=0
+ axes.y0 = .5 + .5*canvas.height; // y0 pixels from top to y=0
+ axes.scale = 40;                 // 40 pixels from x=0 to x=1
+ axes.doNegativeX = true;
+
+ showAxes(ctx,axes);
+ funGraph(ctx,axes,f,"rgb(255,0,0)",1);
+}
+
+function funGraph (ctx,axes,func,color,thick) {
+ var xx, yy, dx=4, x0=axes.x0, y0=axes.y0, scale=axes.scale;
+ var iMax = Math.round((ctx.canvas.width-x0)/dx);
+ var iMin = axes.doNegativeX ? Math.round(-x0/dx) : 0;
+ jQuery('#log').empty();
+ jQuery('#limesi').empty();
+ ctx.beginPath();
+ ctx.lineWidth = thick;
+ ctx.strokeStyle = color;
+ jQuery ('#opis').html('<i>Jedna linija je 0.25<i/> <hr/> <h3>Grafička metoda</h3>');
+ try {
+ jQuery('#limesi').append('<h3><i>Limes na mašinsku preciznost (verovatno netačno)</i></h3><i>lim x&#8594;</i>maxint = '+f(Number.MAX_VALUE)+'<br />');
+ jQuery('#limesi').append('<i>lim x&#8594;</i>0<sup>+</sup> = '+f(0.0000000000000000000000000000001).toFixed(8)+'<br />');
+ jQuery('#limesi').append('<i>lim x&#8594;</i>0<sup>-</sup> = '+f(-0.0000000000000000000000000000001).toFixed(8)+'<br />');
+ jQuery('#limesi').append('<i>lim x&#8594;</i>minint = '+f(Number.MIN_VALUE)+'<hr/>');
+ }
+ catch(err){  jQuery('#limesi').append('<hr/>');}
+ var xp,yp,xs,ys;
+ jQuery('#desc').empty();
+ jQuery('#desc').append("<h3><i>Vrednosti funkcije</i></h3>");
+ for (var i=iMin;i<=iMax;i++) {
+  xx = dx*i; yy = scale*func(xx/scale);
+  
+  if ( !isNaN(func(xx/scale))) {
+			xs = xx/scale; ys=func(xs);
+			if (i==iMin) {xp = xx; yp=ys; }
+			jQuery ('#log').contents().find('body').append('<table><tr><td><i>x=</i>'+xs+' </td><td><i>y=</i>'+ys+'</td></tr></table> <br />'); 
+			if ((yp*ys)<0)  {jQuery ('#opis').append('Nula između '+xp+' i '+xs+'<br />');}
+			if (ys==0) {jQuery ('#opis').append('Nula '+xs+'<br />');}
+			yp = ys; xp = xs;
+			}
+  if (i==iMin) ctx.moveTo(x0+xx,y0-yy);
+  else         ctx.lineTo(x0+xx,y0-yy);
+ }
+ ctx.stroke();
+}
+
+function showAxes(ctx,axes) {
+ var x0=axes.x0, w=ctx.canvas.width;
+ var y0=axes.y0, h=ctx.canvas.height;
+ var xmin = axes.doNegativeX ? 0 : x0;
+ ctx.beginPath();
+ ctx.strokeStyle = "rgb(0,255,0)"; 
+ ctx.moveTo(xmin,y0); ctx.lineTo(w,y0);  // X axis
+ ctx.moveTo(x0,0);    ctx.lineTo(x0,h);  // Y axis
+ ctx.stroke();
+ ctx.beginPath();
+ ctx.strokeStyle = "rgb(0,0,128)";
+ for (var i = 1; i<48; i++)
+	{ctx.moveTo(x0+i*axes.scale/4,0);    ctx.lineTo(x0+i*axes.scale/4,h);}  // Y axis
+ for (var i = 1; i<48; i++)
+	{ctx.moveTo(x0-i*axes.scale/4,0);    ctx.lineTo(x0-i*axes.scale/4,h);}  // Y axis
+ ctx.stroke();
+}
+
+
+			var str = jQuery('#unos1').val();
+			unos = str.replace("ln", "log");
+			
+			function f(x) {
+			var parser = math.parser();
+				  parser.set('x', x);
+				  var res = parser.eval(unos);
+				  return res;
+				}
+				
+				// The derivative of f(x)
+				function fprime(x,dx) {
+				  return ((f(x+dx) - f(x)) / dx) ;
+				}
+			
+			draw();
+			
+				//Newton_Raphson(x0);
+});
+
+</script>
+</table></body></html>

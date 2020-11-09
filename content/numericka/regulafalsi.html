@@ -1,0 +1,90 @@
+﻿<script>
+function writeTableLinerf(n, a, c, b)
+{
+   with (jQuery('#rz2'))
+   {
+      jQuery('#rz2').append("<tr class='b'>");
+      jQuery('#rz2').append("<td class='b'>" + n);
+      jQuery('#rz2').append("<td class='b'>" + a);
+      jQuery('#rz2').append("<td class='b'>" + c);
+      jQuery('#rz2').append("<td class='b'>" + b);
+   }
+}
+
+
+function writeDocHeadrf(expression)
+{jQuery('#rz2').empty();
+   with (jQuery('#rz2'))
+   {
+      jQuery('#rz2').append("<table border=1>");
+      jQuery('#rz2').append("<tr class='b'>");
+      jQuery('#rz2').append("<th colspan=4 class='b'>" + expression + " = 0");
+      jQuery('#rz2').append("<tr class='b'>");
+      jQuery('#rz2').append("<th class='b'>n");
+      jQuery('#rz2').append("<th class='b'>a");
+      jQuery('#rz2').append("<th class='b'>mid");
+      jQuery('#rz2').append("<th class='b'>b");
+   }
+}
+
+
+function writeDocEndrf()
+{
+   with (jQuery('#rz2'))
+   {
+      jQuery('#rz2').append("</table>");
+   }
+}
+function regula(param,inf,a,b,n)
+{
+var t;
+    inf = inf.replace("ln", "log");
+    var f = function(x){var parser = math.parser();
+				  parser.set('x', x);
+				  var res = parser.eval(inf);
+				  return res;};
+   
+   var a = parseFloat(a); // this is important
+   var b = parseFloat(b);
+   var c;
+   writeDocHeadrf(inf);
+for (i = 1; i <= n; i++)
+   {
+      w = (a*f(b) - b*f(a))/(f(b) - f(a));
+
+      if ( f(a)*f(w) <= 0 )
+         b = w;
+      else
+         a = w;
+		 writeTableLinerf(i,a,w,b);
+		 
+		 
+   }
+   result = w;
+   writeDocEndrf();
+}
+     
+      jQuery("#tlacitko").click(function(){
+          regula('x',jQuery("input[name='in']").val(), jQuery("input[name='a']").val(), jQuery("input[name='b']").val(), jQuery("input[name='n']").val());
+    });
+</script>
+<form>
+<table>
+<tr>
+<td><i>f(x)</i></td> <td><input size="30" name="in" id="in" value=""> </td>
+</tr>
+<tr>
+<td>Interval od </td>
+<td><input size="6" name="a" value="0" id="in-a"></td> </tr>
+<tr>
+<td>Interval do</td>
+<td><input size="6" name="b" value="1" id="in-b"></td> </tr>
+<tr>
+<td>Broj iteracija  </td>
+<td><input size="4" name="n" value="10" id="in-n"> </td>
+</tr>
+</table>
+<input value="Računaj" type="button" id="tlacitko" onclick="regula(&#39;x&#39;, form.in.value, form.a.value, form.b.value, form.n.value)">
+</form>
+<div id = "rz2"></div>
+

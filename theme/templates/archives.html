@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block description %}Vesti o Perinoj geometriji.{% endblock %}
+{% block title %}Vesti — {{ SITENAME }}{% endblock %}
+{% block content %}
+
+<h1>Vesti</h1>
+
+<table class="table">
+    <tbody>
+    {% for article in dates %}
+        {% if article.category != "static" %}
+            <tr>
+            <td>{{ article.date.strftime("%Y-%m-%d") }} &nbsp;</td>
+            <td><a href='{{ article.url }}'>{{ article.title }}</a></td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

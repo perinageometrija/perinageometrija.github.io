@@ -1,0 +1,279 @@
+*
+{
+	box-sizing: border-box;
+}
+html, body
+{
+	margin: 0;
+}
+body
+{
+	background: #EDE1D3 url(/theme/images/bg.jpg);
+	font-family: Trebuchet MS, sans-serif;
+	font-size: 12pt;
+	line-height: 2em;
+	font-weight: normal;
+	zoom: 0.9;
+}
+a
+{
+	text-decoration: underline;
+	color: #336784;
+}
+h2, h3, h4
+{
+	font-family: Arial;
+	font-weight: normal;
+	margin-bottom: 1.25rem;
+}
+h2
+{
+	font-size: 2.25em;
+}
+h3
+{
+	font-size: 1.75em;
+}
+header
+{
+	display: flex;
+	justify-content: space-between;
+	padding: 2em 0; 
+}
+nav.header-nav ul a
+{
+	text-decoration: none;
+}
+section.choice
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+section.choice nav, section.choice section
+{
+	display: inline-block;
+	margin:0 .5em;
+}
+
+header, nav.header-nav, #page, footer
+{
+	margin: 0 auto;
+	max-width:100%;
+	width: 1100px;
+	position: relative;
+	overflow: auto;
+}
+
+header h1 img
+{
+	width: 250px;
+}
+header .search input
+{
+	padding: 8px;
+	border: 0;
+	width: 250px;
+ 	background: rgba(62,59,57,0.5);
+	box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.5), 0px 0px 6px 0px rgba(255,255,255,0.9);
+	color: #fff;
+}
+button
+{
+	color: #fff; 
+	text-shadow: 1px 1px 0px rgba(0,0,0,0.6);
+	background: rgba(65,150,196,1);
+	background: linear-gradient(to bottom, #53a7d6 6%,#449dd5 13%,#2979be 67%,#2a6fb0 94%);
+	padding: 8px;
+	border-radius: 5px;
+	border: 0;	
+}
+button:hover
+{
+	background: rgba(65,150,196,1);
+}
+#page
+{
+	display: flex; 
+
+}
+main
+{
+	background: #fff;
+	display:block;
+	flex: 70%;
+	padding: 2rem;
+	box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.25);
+	width: 70%;
+	z-index: 2;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+main p
+{
+	text-align: justify;
+}
+main img
+{
+	max-width:100%;
+}
+
+nav.header-nav
+{
+	border-radius: 10px;
+	font-family: Kreon, sans-serif;
+	font:100% "Verdana", "Arial", "Helvetica", sans-serif;
+	padding: 1rem;
+	box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.25), 0px 0px 6px 0px rgba(255,255,255,0.9);
+	text-shadow: 1px 1px 0px rgba(0,0,0,0.6);
+	background: rgba(65,150,196,1);
+	background: linear-gradient(to bottom, #53a7d6 6%,#449dd5 13%,#2979be 67%,#2a6fb0 94%);
+	margin-bottom: 1rem;
+}
+
+nav.header-nav a li
+{
+	font-size: 1.25em;
+	text-decoration: none;
+	color: #FFF;
+}
+
+nav.header-nav a li:hover
+{
+	text-decoration:underline;
+}
+
+nav.header-nav ul
+{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	display: block;
+	white-space: nowrap;
+}
+
+nav.header-nav ul li
+{
+	border-right: 2px solid #51a6d8;
+	display: inline-block;
+	padding: 0 1rem;
+}
+
+nav.header-nav ul a:last-of-type li
+{
+	border-right: 0;
+}
+.featured-img
+{
+	width:50%;
+	float: left;
+	margin: 10px;
+	clear: left;
+}
+
+section.bottom
+{
+	width: 50%;
+	float: left;
+	padding: 1em;
+}
+
+nav.sidebar
+{
+	background: rgba(62,59,57,0.7);
+	float: left;
+	margin: 0;
+	margin-left: 1em;
+	flex: 30%;
+	flex-grow: 1;
+	padding: 1rem;
+	color: #CCCCCB;
+	box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.5), 0px 0px 6px 0px rgba(255, 255, 255, 0.9);
+	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
+}
+nav.sidebar a, nav.sidebar h2, nav.sidebar h3
+{
+	color: #FFF;
+}
+nav.sidebar ul, section.bottom ul, .list
+{
+	padding: 0 1rem;
+	list-style: none;
+}
+nav.sidebar ul li, section.bottom ul li, .list li
+{
+	padding: 15px 0 15px 0;
+	border-top: solid 1px #8F8F8E;
+}
+.list li img
+{
+	height: 50px;
+	float: left;
+	margin: 10px;
+	clear: left;
+}
+
+footer
+{
+	text-align: center;
+	padding: 1rem 0;
+	color: #A59D93;
+	text-shadow: 1px 1px 0px rgba(255,255,255,0.75);
+}
+
+@media only screen and (max-width:925px)
+{
+	header, nav.header-nav, #page, main, nav.sidebar, footer
+	{
+		width: 100%;
+	}	
+}
+@media only screen and (max-width:680px)
+{
+	#page		
+	{	
+		display:block;
+	}
+	nav.sidebar
+	{
+		margin-left: 0;
+	}
+	section.bottom
+	{
+		width: 100%;
+	}
+}
+@media only screen and (max-width:623px)
+{
+	header
+	{
+		display: inline-block;
+	}
+}
+@media only screen and (max-width:590px)
+{
+	nav.header-nav ul li
+	{
+		padding: .5em;
+		display: block;
+		border: 0;
+		border-bottom: 2px solid #51a6d8;
+	}
+	nav.header-nav ul a:last-of-type li
+	{
+		border: 0;
+	}
+}   
+@media only screen and (max-width:386px)
+{
+	section.choice
+	{
+		display: inline-block;
+		text-align: center;
+	}
+	header input
+	{
+		width:80%;
+	}
+} 

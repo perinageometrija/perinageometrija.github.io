@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf8">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+	<title>Perine Baze podataka</title>
+	<link rel="stylesheet" href="codemirror/lib/codemirror.css">
+	<!--<link rel="stylesheet" href="demo.css">-->
+	<link rel="stylesheet" href="css/bootstrap.css"/>
+	<link rel="stylesheet" href="css/main.css"/>
+	<script src="codemirror/lib/codemirror.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+	<!--<div class="row">-->
+		<!--<div class="col-xs-12">-->
+			<!--<div class="header">-->
+				<!--<h1>Perine Baze podataka</h1>-->
+			<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+
+	<div class="header">
+		<h1>Perine Baze podataka</h1>
+		
+		<div class="buttons">
+			<button id="execute" class="button">► (Ctrl+Enter)</button>
+			<!--<button id='savedb'  class="button">Sačuvaj bazu podataka (Ctrl+S)</button>-->
+			<!--<label class="button">Učitaj bazu podataka: <input type='file' id='dbfile' ></label>-->
+			<div id="savedb"></div>
+			<div id="dbfile"></div>
+		</div>
+	</div>
+
+	<div class="row content">
+		<div class="col-xs-2 high">
+			<div class="inner-high scroll">
+				<ul style="list-style-type: none;">
+					<li><img src="baz.png" />&nbsp; Biblioteka</li>
+					<li><img src="tab.png" />&nbsp;Autor</li>
+					<ul>
+						<li><img src="key.png" /> &nbsp;SifA</li>
+						<li><img src="kol.png" /> &nbsp;Ime</li>
+					</ul>
+					<li><img src="tab.png" />&nbsp;Clan</li>
+					<ul>
+						<li><img src="key.png" /> &nbsp;SifC</li>
+						<li><img src="kol.png" /> &nbsp;Ime</li>
+					</ul>
+					<li><img src="tab.png" />&nbsp;Drzi</li>
+					<ul>
+						<li><img src="key.png" /> &nbsp;SifK</li>
+						<li><img src="key.png" /> &nbsp;SifC</li>
+						<li><img src="kol.png" /> &nbsp;Datum</li>
+					</ul>
+					<li><img src="tab.png" />&nbsp;Je_Autor</li>
+					<ul>
+						<li><img src="key.png" /> &nbsp;SifA</li>
+						<li><img src="key.png" /> &nbsp;SifN</li>
+						<li><img src="kol.png" /> &nbsp;Koji</li>
+					</ul>
+					<li><img src="tab.png" />&nbsp;Knjiga</li>
+					<ul>
+						<li><img src="key.png" /> &nbsp;SifK</li>
+						<li><img src="key.png" /> &nbsp;SifN</li>
+					</ul>
+					<li><img src="tab.png" />&nbsp;Naslov</li>
+					<ul>
+						<li><img src="key.png" /> &nbsp;SifN</li>
+						<li><img src="kol.png" /> &nbsp;Naziv</li>
+						<li><img src="kol.png" /> &nbsp;SifO</li>
+					</ul>
+					<li><img src="tab.png" />&nbsp;Oblast</li>
+					<ul>
+						<li><img src="key.png" /> &nbsp;SifO</li>
+						<li><img src="kol.png" /> &nbsp;Naziv</li>
+					</ul>
+					<li><img src="tab.png" />&nbsp;Pozajmica</li>
+					<ul>
+						<li><img src="key.png" /> &nbsp;SifP</li>
+						<li><img src="key.png" /> &nbsp;SifC</li>
+						<li><img src="key.png" /> &nbsp;SifK</li>
+						<li><img src="kol.png" /> &nbsp;Dana</li>
+					</ul>
+					<li><img src="tab.png" />&nbsp;Rezervacija</li>
+					<ul>
+						<li><img src="key.png" /> &nbsp;SifN</li>
+						<li><img src="key.png" /> &nbsp;SifC</li>
+						<li><img src="kol.png" /> &nbsp;Datum</li>
+					</ul>
+				</ul>
+			</div>
+		</div>
+		<div class="col-xs-6 high">
+			<div class="inner-high">
+				<textarea id="commands">
+
+
+--Lista svih naslova.
+select Naslov.Naziv from Naslov;
+
+--Koji clan koju knjigu drzi?
+select Clan.Ime as "Clan", Naslov.Naziv as "Knjiga"
+	from Drzi
+		join Clan on Clan.SifC = Drzi.SifC
+		join Knjiga on Knjiga.SifK = Drzi.SifK
+		join Naslov on Naslov.SifN = Knjiga.SifN;
+
+--Koji autor je koliko napisao?
+select Autor.Ime as "Autor", count(Naslov.Naziv) as "Broj knjiga"
+	from Je_Autor
+		join Autor on Autor.SifA = Je_Autor.SifA
+		join Naslov on Naslov.SifN = Je_Autor.SifN
+	group by Autor.Ime
+	order by "Broj knjiga" desc;
+</textarea>
+			</div>
+		</div>
+		<div class="col-xs-4 high">
+			<div class="inner-high" style="cursor: default;">
+				<div id="error" class="error"></div>
+				<pre id="output" class="high">Rezultati</pre>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">
+		<p style="color: #D6DBE9"><a href='https://github.com/kripken/sql.js'>sql.js</a> | <a
+				href="/..">Perina Geomterija</a> | made by ninjas</p>
+	</div>
+
+	<script src="codemirror/mode/sql/sql.js"></script>
+	<script type="text/javascript" src="js/gui.js"></script>
+	<script>loadDb();</script>
+</div>
+</body>
+</html>
