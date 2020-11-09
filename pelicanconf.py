@@ -24,9 +24,10 @@ THEME = 'theme'
 
 # Blogroll
 LINKS = (('Cern', 'https://www.cern.ch/'),
-         ('Uncyclopedia', 'http://uncyclopedia.wikia.com/wiki/Main_Page'),
+         ('Uncyclopedia', 'https://uncyclopedia.ca/wiki/Main_Page'),
          ('/b/', 'https://4chan.org/b'),
-         ('encyclopediadramatica', 'https://encyclopediadramatica.rs/Main_Page'),)
+#         ('encyclopediadramatica', 'https://encyclopediadramatica.rs/Main_Page'),
+        )
 
 # Social widget
 SOCIAL = (('You can add links in your config file', '#'),
