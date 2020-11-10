@@ -5,11 +5,11 @@
 		<meta charset="utf-8">
 		<meta http-equiv='content-type' content='text/html; charset=utf-8' />
 		<meta name='description' content='Projekat (tadašnjih) Matematicke gimnazije. Saznajte kako je došlo do ovog šokantnog otkrica koje je uzdrmalo temelje naucne zajednice!' />
-		<meta name='title' content='Perina geometrija' />
-		<meta name='keywords' content='pera,matematika,matematicka,gimnazija,geometrija,perina,4d,euklidski,pancevo,krompir,haiku' />
+		<meta name='title' content="{{ SITENAME }}" />
+		<meta name='keywords' content="{{ KEYWORDS }}" />
 		<title>{% block title %}{{ SITENAME }}{% endblock %}</title>
-		<link rel='stylesheet' type='text/css' href='{{ SITEURL }}/theme/css/style.css' />
-		<link href="{{ SITEURL }}/theme/favicon.ico" rel="icon" type="image/x-icon" />
+		<link rel='stylesheet' type='text/css' href='/theme/css/style.css' />
+		<link href="/theme/favicon.ico" rel="icon" type="image/x-icon" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta property="og:image" content="{{ SITEURL }}/theme/images/splash.jpg" />
 		
@@ -19,12 +19,12 @@
 		<script src="{{ SITEURL }}/theme/js/social.js"></script>
 		<header>
 			<h1>
-				<a href="{{ SITEURL }}/"><img src="/theme/images/splash.jpg" alt="Perina Geometrija" /></a>
+				<a href="/"><img src="/theme/images/splash.jpg" alt="Perina Geometrija" /></a>
 			</h1>
 			<section class="choice">
 				<nav class="social">
-					<a href='https://www.facebook.com/geometrija'><img src='{{ SITEURL }}/theme/images/fb.png' alt="facebook"/></a>
-					<a href="https://twitter.com/PerinaGeometrij"><img src='{{ SITEURL }}/theme/images/twitter.png' alt="twitter"/></a>
+					<a href='https://www.facebook.com/geometrija'><img src='/theme/images/fb.png' alt="facebook"/></a>
+					<a href="https://twitter.com/PerinaGeometrij"><img src='/theme/images/twitter.png' alt="twitter"/></a>
 				</nav>
 				<section class="search">
 					<form action="https://www.google.com/search" method='get' onSubmit="this.q.value=this.qfront.value + ' site:' + location.host">
@@ -38,12 +38,12 @@
 
 		<nav class="header-nav">
 			<ul>
-				<a href="{{ SITEURL }}/"><li>Početna</li></a>
+				<a href="/"><li>Početna</li></a>
 				<!-- <a href="./forum"><li>Forum</li></a> -->
-				<a href="{{ SITEURL }}/aksiome.html"><li>Aksiome</li></a>
-				<a href="{{ SITEURL }}/archives.html"><li>Vesti</li></a>
-				<a href="{{ SITEURL }}/istorijat.html"><li>Istorijat</li></a>
-				<a href="{{ SITEURL }}/kontakt.html"><li>Kontakt</li></a>
+				<a href="/aksiome.html"><li>Aksiome</li></a>
+				<a href="/archives.html"><li>Vesti</li></a>
+				<a href="/istorijat.html"><li>Istorijat</li></a>
+				<a href="/kontakt.html"><li>Kontakt</li></a>
 			</ul>
 		</nav>
 		<div id="page">
@@ -53,19 +53,19 @@
 					<h3>Naučite osnove Perine geometrije</h3>
 					<p>Na našem sajtu možete naći iscrpna objašnjenja i definicije koje potkrepljuju Perine teoreme i omogućavaju dublju naučnu analizu</p>
 					<ul>
-						<li><a href='{{ SITEURL }}/aksiome.html'>Aksiome</a></li>
-						<li><a href='{{ SITEURL }}/teoreme.html'>Teoreme</a></li>
-						<li><a href='{{ SITEURL }}/dokazi.html'>Naučni dokazi</a></li>
-						<li><a href='{{ SITEURL }}/video.html'>Video predavanja</a></li>
+						<li><a href='/aksiome.html'>Aksiome</a></li>
+						<li><a href='/teoreme.html'>Teoreme</a></li>
+						<li><a href='/dokazi.html'>Naučni dokazi</a></li>
+						<li><a href='/video.html'>Video predavanja</a></li>
 					</ul>
 				</section>
 				<section class="bottom">
 					<h3>Opširnije o otkriću</h3>
 					<p>Saznajte kako je došlo do ovog šokantnog otkrića koje je uzdrmalo temelje naučne zajednice, kao i praktičnu primenu istog</p>
 					<ul>
-						<li><a href='{{ SITEURL }}/istorijat.html'>Istorijat</a></li>
-						<li><a href='{{ SITEURL }}/dokazi.html'>Primeri iz svakodnevnog života</a></li>
-						<li><a href='{{ SITEURL }}/mediji.html'>Odjeci u društvu</a></li>
+						<li><a href='/istorijat.html'>Istorijat</a></li>
+						<li><a href='/dokazi.html'>Primeri iz svakodnevnog života</a></li>
+						<li><a href='/mediji.html'>Odjeci u društvu</a></li>
 					</ul>
 				</section>
 			</main>
@@ -76,12 +76,12 @@
 					<ul>
 						{% for article in dates[:5] %}
 							<li>
-								<a href='{{ SITEURL }}/{{ article.url }}'>{{ article.title }}</a>
+								<a href='/{{ article.url }}'>{{ article.title }}</a>
 								<div id='posleslike'>{{ article.date.strftime("%Y-%m-%d") }}</div>
 							</li>
 						{% endfor %}
 						<li >
-							<a href="{{ SITEURL }}/">Novi sajt je online!</a> <br/>
+							<a href="/">Novi sajt je online!</a> <br/>
 							<div id='posleslike'>2012-09-07</div>
 						</li>
 					</ul>
