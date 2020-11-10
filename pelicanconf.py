@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'ninjas'
 SITENAME = 'Perina Geometrija'
-SITEURL = 'https://perinageometrija.com/'
+SITEURL = 'https://perinageometrija.com'
 KEYWORDS = 'pera,matematika,matematicka,gimnazija,geometrija,perina,4d,euklidski,pancevo,krompir,haiku'
 
 PATH = 'content'
