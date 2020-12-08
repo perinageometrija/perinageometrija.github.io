@@ -36,7 +36,7 @@ SOCIAL = (('You can add links in your config file', '#'),
 
 DEFAULT_PAGINATION = 10
 
-STATIC_PATHS = ['images', 'static', 'uploads', 'asembler', 'baze', 'instatropics', 'numericka', 'pascal']
+STATIC_PATHS = ['images', 'static', 'uploads', 'asembler', 'baze', 'forum', 'instatropics', 'numericka', 'pascal']
 READERS = {'html': None}
 
 ARTICLE_SAVE_AS = 'vesti/{slug}.html'
