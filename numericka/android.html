@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Numeričke metode</title>
+<!--
+    This template can be used for simple app with left side menu that can be opened to switch views, for applications like Youtube App or Gmail app.
+-->  
+    
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0;" />
+    
+    <link rel="stylesheet" type="text/css" href="appframework/af.ui.css" />
+    <link rel="stylesheet" type="text/css" href="appframework/icons.css" />
+    <!--
+    <script type="text/javascript" charset="utf-8" src="jq.appframework.js"></script>-->
+    <script type="text/javascript" charset="utf-8" src="appframework/appframework.ui.min.js"></script>
+    <!--AppFramework plugin for sliding side menu-->
+    <script type="text/javascript" charset="utf-8" src="appframework/plugins/af.slidemenu.js"></script>
+
+    
+
+    <!-- phantom library, needed for XDK "legacy" container api calls -->
+    <script src="intelxdk.js"></script>
+    <!-- phantom library, needed for Cordova api calls -->
+    <script src="cordova.js"></script>
+    <!-- phantom library, needed for XDK "legacy" container CORS -->
+    <script src="xhr.js"></script>
+    
+    <script>
+        
+        var onDeviceReady=function(){    
+            // called when Cordova is ready
+        if( window.Cordova && navigator.splashscreen ) {     // Cordova API detected
+         
+            $.ui.launch();
+             
+               //navigator.splashscreen.hide() ;                 // hide splash screen
+            }
+        } ;
+        document.addEventListener("deviceready", onDeviceReady, false) ;
+    </script>
+    
+    <script>   
+        $.ui.autoLaunch = false;
+        $.ui.animateHeaders = false;
+     $.feat.nativeTouchScroll=false;
+        $(document).ready(function(){
+            jQuery.noConflict();  
+            $.ui.setSideMenuWidth('260px');
+            $.ui.launch();
+            
+        });
+    </script>
+   <style></style>
+</head>
+<body> 
+<div id="afui" class="android light">
+    
+    <!--Left Side Menu Navigation bar -->
+    <nav>
+        <ul class="list">
+            <li><a href="#page1" class="icon home">Početna</a></li>
+            <li><a href="#page4" class="icon paper">Grafička metoda</a></li>
+            <li><a href="#page6" class="icon paper">Regula falsi</a></li>
+            <li><a href="#page5" class="icon paper">Polovljenje intervala</a></li>
+            <li><a href="#page2" class="icon paper">Njutnova Metoda</a></li>
+            <li><a href="#page3" class="icon paper">Metoda Iteracije</a></li>
+           <!--<li><a href="#page4" class="icon chat">Profile</a></li>-->
+        </ul>
+    </nav>
+    
+    <div id="content" style=""> 
+         <!--Main View Pages-->
+        <div class="panel" title="Početna" id="page1" data-footer="none" selected="true" js-scrolling="true" style="overflow:scroll !important">
+            <header>
+                <a id="menubadge" onclick='$.ui.toggleSideMenu()' class='menuButton' style="float:left !important"></a>
+                <h1>Numeričke metode</h1>
+            </header>
+            <p><b>Dobro došli u program za Numeričku</b> <br /><br /></b>U meniju sa leve strane se nalazi izbor svih numeričkih metoda. Sve funkcije se unose sa zagradama isključivo - mora sin(x) ne može sinx ili sin x. Prirodni logaritam je Log. <br /> Napravio <a href="#">lazanet</a>.<br /><br /><h2>Srećno!</h2>
+        <br>
+       <h2>Teorija</h2>
+        <br />
+        <b>Metoda proste iteracije</b><br /><br />
+        Jednačinu oblika f(x) = 0 možemo na beskonačno mnogo načina predstaviti
+u ekvivalentnom obliku
+        <br>
+        <center>x = g(x).</center>
+        <br>
+Rešenja ove jednačine su fiksne tačke funkcije g, koju koristimo za generisanje
+niza x<sub>n</sub>
+<br>
+        <center>x<sub>n+1</sub> = g(x<sub>n</sub>), n ∈ N0 .</center>
+        <br>
+Ovakve iterativne metode zovemo prostim, jer se u izračunavanju nove iteracije
+od već izračunatih iteracija koristi samo prethodna. 
+        <br /><br />
+        <b>Njutnova metoda</b><br /><br />
+        Ako u metodi sečica [x<sub>n</sub>, x<sub>n−1</sub> ; f] zamenimo sa f'(x<sub>n</sub>) (uz pretpostavku
+        f'(x<sub>n</sub>) /= 0) dobijamo sledeću formulu za generisanje niza xn,
+<br>
+        <center>x<sub>n+1</sub> = x<sub>n</sub> − f(x<sub>n</sub>)/f'(x<sub>n</sub>)
+        </center>
+        <br>
+Motivacija za ovo je očigledna, naročito kad su xn i xn−1 veoma blizu. Nova
+iteracija x<sub>n+1</sub> je nula tangente funkcije f u tački (x<sub>n</sub>, f(x<sub>n</sub>)).
+        <br /><br />
+        <b>Regula falsi</b><br /><br />
+<p>Za kontinualnu funkciju f (x) na intervalu [a,b] takvu da f (a)
+* f (b) &lt; 0&nbsp;
+</p><center><br><table border="0" cellspacing="0" cellpadding="0" width="140" height="50%">
+<tbody><tr>
+<td rowspan="2"><font size="+1">c =&nbsp;</font></td>
+
+<td valign="BOTTOM"><u><font size="+1">a*f(b) - b*f(a)</font></u></td>
+</tr>
+
+<tr>
+<td><font size="+1">&nbsp;&nbsp;&nbsp; f(b) - f(a)</font></td>
+</tr>
+</tbody></table></center>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ako f (a) * f (c) &lt; 0 onda&nbsp;
+b = c&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+u suprotnom&nbsp; a = c&nbsp;
+<br>Postupak se ponavlja dok se ne dođe do željene preciznosti</p>
+        </p>
+    <h2>Šta je potrebno uraditi pre ovoga</h2> <br />
+    <b>IZOLOVANJE NULE</b><br />
+Ispitujemo funkciju, vidimo čemu teži na granicama domena, gde raste, gde je konveksna, koje su joj trivijalne nule ako ih ima. Kada iscrtamo f-ju, i nađemo opseg u kojem je nula. <br /><br />
+    <b>Njutnova metoda</b><br /><br />
+Uslovi: za taj opseg [alfa, beta] koji smo našli mora da važi da su na njemu prvi i drugi izvod neprekidni i stalnog znaka. Ako nije tako, moramo da menjamo opseg (npr. smanjujemo ga).
+<br />
+    x<sub>0</sub> je ili alfa ili beta (x<sub>0</sub>=alfa ili x<sub>0</sub>=beta), tačnije onaj od ta dva za koji važi da je  f(x0) * f''(x0)>0
+<br> <br>
+<center><img src="f.png" /></center>
+<br /><br />
+    <b>Iterativna metoda</b><br />
+Početni oblik jednačine moramo da promenimo u oblik x=g(x) (oblika ima raznih, treba izabrati pravi)  tako da važi:
+<br />
+<br />
+1. g(x): [alfa, beta] -->  [alfa, beta] 
+<br />
+2. |prvi izvod od g(x)|< 1 i treba da važi da je nula jedinstvena na  [alfa, beta] 
+<br />
+<br /><center>
+x<sub>k+1</sub>= g(x<sub>k</sub>) </center>
+<br />
+<br />
+x<sub>0</sub> je ili alfa ili beta, nije važno
+    
+    
+ <h2>Spisak podržanih funkcija</h2>
+abs(x)<br />add(x, y)<br />ceil(x)<br />cube(x)<br />divide(x, y)<br />dotDivide(x, y)<br />dotMultiply(x, y)<br />dotPow(x, y)<br />exp(x)<br />floor(x)<br />gcd(a, b)<br />lcm(a, b)<br />ln(x)<br />log(x [, base])<br />log10(x)<br />mod(x, y)<br />multiply(x, y)<br />norm(x [, p])<br />nthRoot(a, root)<br />pow(x, y)<br />round(x [, n])<br />sign(x)<br />sqrt(x)<br />square(x)<br />subtract(x, y)<br />acos(x)<br />asin(x)<br />atan(x)<br />atan2(y, x)<br />cos(x)<br />cosh(x)<br />cot(x)<br />coth(x)<br />csc(x)<br />csch(x)<br />sec(x)<br />sech(x)<br />sin(x)<br />sinh(x)<br />tan(x)<br />tanh(x)
+
+    
+    
+        </div>
+       <div class="panel" title="Njutnova metoda" id="page2" data-footer="none" js-scrolling="true" style="overflow:scroll !important" data-defer="njutn.html">
+           
+        </div>
+     
+        <div class="panel" title="Metoda iteracije" id="page3" data-footer="none" js-scrolling="true" style="overflow:scroll !important" data-defer="iterativna.html">
+            
+        </div>
+        
+        <div class="panel" title="Grafička metoda" id="page4" data-footer="none" js-scrolling="true" style="overflow:scroll !important" data-defer="graficka.html">
+        
+        </div>
+    <div class="panel" title="Polovljenje intervala" id="page5" data-footer="none" js-scrolling="true" style="overflow:scroll !important" data-defer="polovljenjeintervala.html">
+        
+        
+        </div>
+        <div class="panel" title="Regula falsi" id="page6" data-footer="none" js-scrolling="true" style="overflow:scroll !important" data-defer="regulafalsi.html">
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="jquery.js"> jQuery.noConflict();</script>
+</html>    

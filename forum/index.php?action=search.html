@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="sr-YU">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="Themes/default/css/index.css%3Fsmf21rc3_1607406732.css">
+	<link rel="stylesheet" href="Themes/default/css/responsive.css%3Fsmf21rc3_1607406732.css">
+	<style>
+	img.avatar { max-width: 65px; max-height: 65px; }
+	
+	</style>
+	<script>
+		var smf_theme_url = "/forum/Themes/default";
+		var smf_default_theme_url = "/forum/Themes/default";
+		var smf_images_url = "/forum/Themes/default/images";
+		var smf_smileys_url = "/forum/Smileys";
+		var smf_smiley_sets = "";
+		var smf_smiley_sets_default = "";
+		var smf_scripturl = "http://localhost/forum/index.php";
+		var smf_iso_case_folding = false;
+		var smf_charset = "UTF-8";
+		var smf_session_id = "42f7f0022922b57e0b9595c923d81039";
+		var smf_session_var = "ef3bcbadc88";
+		var smf_member_id;
+		var ajax_notification_text = 'Učitavam...';
+		var help_popup_heading_text = 'Malo ste izgubljeni? Dozvlite mi da objasnim:';
+		var banned_text = 'Izvinjavamo se Gost, zabranjeno vam je da koristite ovaj forum!';
+		var smf_txt_expand = 'Expand';
+		var smf_txt_shrink = 'Shrink';
+		var smf_quote_expand = false;
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js?smf21rc3_1607406732"></script>
+	<script src="Themes/default/scripts/smf_jquery_plugins.js%3Fsmf21rc3_1607406732"></script>
+	<script src="Themes/default/scripts/script.js%3Fsmf21rc3_1607406732"></script>
+	<script src="Themes/default/scripts/theme.js%3Fsmf21rc3_1607406732"></script>
+	<script src="Themes/default/scripts/suggest.js%3Fsmf21rc3_1607406732"></script>
+	<script>
+	var smf_you_sure ='Da li ste sigurni da želite da uradite ovo?';
+	</script>
+	<title>Podesi parametre za pretragu</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:site_name" content="Perina geometrija">
+	<meta property="og:title" content="Podesi parametre za pretragu">
+	<meta property="og:image" content="https://perinageometrija.com/theme/images/splash.jpg">
+	<meta property="og:description" content="Podesi parametre za pretragu">
+	<meta name="description" content="Podesi parametre za pretragu">
+	<meta name="theme-color" content="#557EA0">
+	<link rel="help" href="index.php%3Faction=help.html">
+	<link rel="contents" href="index.php.html">
+	<link rel="search" href="index.php%3Faction=search.html">
+</head>
+<body id="smf" class="action_search">
+<div id="footerfix">
+	<div id="header">
+		<h1 class="forumtitle">
+			<a id="top" href="index.php.html"><img src="https://perinageometrija.com/theme/images/splash.jpg" alt="Perina geometrija"></a>
+		</h1>
+		<div id="siteslogan">Perina Geometrija</div>
+	</div>
+	<div id="wrapper">
+		<div id="upper_section">
+			<div id="inner_section">
+				<div id="inner_wrap">
+					<div class="user">
+						Statička verzija foruma, za uspomenu i dugo sećanje.
+					</div>
+					<div class="news">
+						<h2>Vesti: </h2>
+						<p>Obavezno procitajte <a href="index.php%3Ftopic=7.0.html" class="bbc_link" target="_blank" rel="noopener">pravilnik foruma</a></p>
+					</div>
+					<hr class="clear">
+				</div>
+				<div class="navigate_section">
+					<ul>
+						<li>
+							<a href="index.php.html"><span>Perina geometrija</span></a>
+						</li>
+						<li class="last">
+							<span class="dividers"> &#9658; </span>
+							<a href="index.php%3Faction=search.html"><span>Pretraga</span></a>
+						</li>
+					</ul>
+				</div><!-- .navigate_section -->
+			</div><!-- #inner_section -->
+		</div><!-- #upper_section -->
+		<div id="content_section">
+			<div id="main_content_section">
+	<form action="http://localhost/forum/index.php?action=search2" method="post" accept-charset="UTF-8" name="searchform" id="searchform">
+		<div class="cat_bar">
+			<h3 class="catbg">
+				<span class="main_icons filter"></span>Podesi parametre za pretragu
+			</h3>
+		</div>
+		<div id="advanced_search" class="roundframe">
+			<dl class="settings" id="search_options">
+				<dt>
+					<strong><label for="searchfor">Traži:</label></strong>
+				</dt>
+				<dd>
+					<input type="search" name="search" id="searchfor"  maxlength="100" size="40">
+					<br><em class="smalltext"><em>na pr.</em> Stevan Sremac "Zona Zamfirova" -film</em>
+				</dd>
+
+				<dt>
+					<label for="searchtype">Podudara:</label>
+				</dt>
+				<dd>
+					<select name="searchtype" id="searchtype">
+						<option value="1" selected>Poklopi sve reči</option>
+						<option value="2">Poklopi bilo koje reči</option>
+					</select>
+				</dd>
+				<dt>
+					<label for="userspec">po korisniku:</label>
+				</dt>
+				<dd>
+					<input id="userspec" type="text" name="userspec" value="*" size="40">
+				</dd>
+				<dt>
+					<label for="sort">Poređaj po:</label>
+				</dt>
+				<dd>
+					<select id="sort" name="sort">
+						<option value="relevance|desc">najrelevantnijim rezultatima</option>
+						<option value="num_replies|desc">najvećim temama</option>
+						<option value="num_replies|asc">najmanjim temama</option>
+						<option value="id_msg|desc">najsvežijim temama</option>
+						<option value="id_msg|asc">najstarijim temama</option>
+					</select>
+				</dd>
+				<dt class="righttext options">Opcije:
+				</dt>
+				<dd class="options">
+					<ul>
+						<li>
+							<input type="checkbox" name="show_complete" id="show_complete" value="1">
+							<label for="show_complete">Prikaži rezultate kao poruke</label>
+						</li>
+						<li>
+							<input type="checkbox" name="subject_only" id="subject_only" value="1">
+							<label for="subject_only">Samo naslov teme</label>
+						</li>
+					</ul>
+				</dd>
+				<dt class="between">Poruke su:
+				</dt>
+				<dd>
+					<label for="minage">između </label>
+					<input type="number" name="minage" id="minage" value="0" size="5" maxlength="4">
+					<label for="maxage"> i </label>
+					<input type="number" name="maxage" id="maxage" value="9999" size="5" maxlength="4"> dana
+				</dd>
+			</dl>
+			<script>
+				createEventListener(window);
+				window.addEventListener("load", initSearch, false);
+			</script>
+			<input type="hidden" name="advanced" value="1">
+		</div>
+		<fieldset class="flow_hidden">
+			<div class="roundframe alt">
+				<div class="title_bar">
+					<h4 class="titlebg">
+						<span id="advanced_panel_toggle" class="toggle_down floatright" style="display: none;"></span>
+						<a href="index.php%3Faction=search.html#" id="advanced_panel_link">Izaberite forum u okviru kojeg želite da tražite, ili izaberite sve</a>
+					</h4>
+				</div>
+				<div class="flow_auto boardslist" id="advanced_panel_div" style="display: none;">
+					<ul>
+						<li>
+							<a href="javascript:void(0);" onclick="selectBoards([2, 1, 3, 12, 11], 'searchform'); return false;">Perina Geometrija</a>
+							<ul>
+								<li>
+									<label for="brd2" style="margin-left: 0em;">
+										<input type="checkbox" id="brd2" name="brd[2]" value="2" checked> O Perinoj geometriji
+									</label>
+								</li>
+								<li>
+									<label for="brd1" style="margin-left: 0em;">
+										<input type="checkbox" id="brd1" name="brd[1]" value="1" checked> Opšte
+									</label>
+								</li>
+								<li>
+									<label for="brd3" style="margin-left: 0em;">
+										<input type="checkbox" id="brd3" name="brd[3]" value="3" checked> Škola
+									</label>
+								</li>
+								<li>
+									<label for="brd12" style="margin-left: 1em;">
+										<input type="checkbox" id="brd12" name="brd[12]" value="12" checked> Predsednicki izbori i rad predsednika
+									</label>
+								</li>
+								<li>
+									<label for="brd11" style="margin-left: 0em;">
+										<input type="checkbox" id="brd11" name="brd[11]" value="11" checked> Roze Bezdan (Kostin lični dnevnik)
+									</label>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div><!-- #advanced_panel_div -->
+				<br class="clear">
+				<div class="padding">
+					<input type="checkbox" name="all" id="check_all" value="" checked onclick="invertAll(this, this.form, 'brd');">
+					<label for="check_all"><em>Označi sve</em></label>
+					<input type="submit" name="b_search" value="Pretraga" class="button floatright">
+				</div>
+			</div><!-- .roundframe -->
+		</fieldset>
+		<script>
+			var oAdvancedPanelToggle = new smc_Toggle({
+				bToggleEnabled: true,
+				bCurrentlyCollapsed: true,
+				aSwappableContainers: [
+					'advanced_panel_div'
+				],
+				aSwapImages: [
+					{
+						sId: 'advanced_panel_toggle',
+						altExpanded: 'Sakrij',
+						altCollapsed: 'Prikaži'
+					}
+				],
+				aSwapLinks: [
+					{
+						sId: 'advanced_panel_link',
+						msgExpanded: 'Izaberite forum u okviru kojeg želite da tražite, ili izaberite sve',
+						msgCollapsed: 'Izaberite forum u okviru kojeg želite da tražite, ili izaberite sve'
+					}
+				]
+			});
+		</script>
+	</form>
+	<script>
+		var oAddMemberSuggest = new smc_AutoSuggest({
+			sSelf: 'oAddMemberSuggest',
+			sSessionId: smf_session_id,
+			sSessionVar: smf_session_var,
+			sControlId: 'userspec',
+			sSearchType: 'member',
+			bItemList: false
+		});
+	</script>
+			</div><!-- #main_content_section -->
+		</div><!-- #content_section -->
+	</div><!-- #wrapper -->
+</div><!-- #footerfix -->
+	<div id="footer">
+		<div class="inner_wrap">
+		<ul>
+			<li class="floatright"> | <a href="index.php%3Faction=search.html#top_section">Idi gore &#9650;</a></li>
+			<li class="copyright"><a href="index.php%3Faction=credits.html" title="Licenca" target="_blank" class="new_win">SMF 2.1 RC3 &copy; 2020</a>, <a href="http://www.simplemachines.org" title="Simple Machines" target="_blank" class="new_win">Simple Machines</a></li>
+		</ul>
+		</div>
+	</div><!-- #footer -->
+<script>
+window.addEventListener("DOMContentLoaded", function() {
+	function triggerCron()
+	{
+		$.get('http://localhost/forum' + "/cron.php?ts=1607417325");
+	}
+	window.setTimeout(triggerCron, 1);
+});
+</script>
+</body>
+</html>

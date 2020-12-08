@@ -1,0 +1,100 @@
+﻿<html><head>
+		 <!--<script type="text/javascript" src="jquery.js">jQuery.noConflict();</script>-->
+		<script type="text/javascript" src="math.js"> </script>
+		<title>Numerička</title>
+		
+	</head>
+<body class="holo-light">
+<div class="edittext">
+</div><table width="300px	">
+<tbody><tr> <td><i>f(x)</i></td> <td><input type="text" id="unos"> </td></tr>
+<tr> <td>ε</td> <td> <input type="text" id="epsilon" value="0.0001"></td></tr>
+<tr> <td><i>x<sub>0</sub></i></td> <td> <input type="text" id="x0" value="0"></td></tr>
+<tr> <td>Broj iteracija</td> <td> <input type="text" id="iter" value="20"></td></tr>
+<tr> <td></td><td><input type="button" id="teraj" value="Računaj" width="100%" style="border:none;"> </td></tr>
+</tbody></table>
+
+    
+<table id="njutn"></table> 
+
+
+
+
+	<script>
+			var unos;
+			var epsilon;
+			var brojcifara;
+			var x0 ;
+jQuery( "#teraj" ).click(function() {
+			
+			var str = jQuery('#unos').val();
+			unos = str.replace("ln", "log");
+			epsilon = parseFloat(jQuery('#epsilon').val());
+			brojcifara = epsilon.toString().length -2;
+			x0 = parseFloat(jQuery('#x0').val());
+			jQuery('#njutn').empty();
+			function f(x) {
+			var parser = math.parser();
+				  parser.set('x', x);
+				  var res = parser.eval(unos);
+				  return res;
+				}
+				
+				// The derivative of f(x)
+				function fprime(x,dx) {
+				  return ((f(x+dx) - f(x)) / dx) ;
+				}
+			function napisinjutn(a)
+			{
+			jQuery('#njutn').append(a);
+			}
+			
+			function Newton_Raphson(x0) {
+			  // These choices depend on the problem being solved
+			  var maxIterations = parseInt(jQuery('#iter').val());   
+			  var haveWeFoundSolution = false; 
+			  var newtonX;
+			 napisinjutn('<h3><i>Njutnova metoda</i></h3> <br /> <img src="f.png" ></img><br />')
+			  for (var i = 0; i < maxIterations; ++i) {
+				// Compute the denominator
+				var denominator = fprime(x0,epsilon/1000);
+				/*if (Math.abs(denominator) < epsilon/10) {
+				  // Don't want to divide by too small of a number
+				  napisinjutn('Upozorenje: previše mali opseg');
+				  break;                     
+				}*/
+				 
+					// Do Newton's computation
+					newtonX = (x0 - f(x0) / denominator) ;
+				 newtonX = parseFloat(newtonX. toFixed(8));
+					// If the result is within the desired tolerance
+					if (Math.abs(newtonX - x0) < epsilon/100000) { 
+					  napisinjutn("USPEO! <br /> Pronađen koren je: <b>" + newtonX. toFixed(brojcifara)  + "</b><br /> <br /> <hr>");
+					  haveWeFoundSolution = true;
+					  break;                     
+					}
+					else {
+					napisinjutn ("<b>"+i+".</b><br /><br /><i>x<sub>"+i+"</sub></i>="+x0+" <br /><i>f(x<sub>"+i+"</sub>) = </i>"+f(x0). toFixed(8)+"<br /><i> f '(x<sub>"+i+"</sub>)=</i>"+denominator. toFixed(8)+"<br /><i> x<sub>"+(i+1)+"</sub>=</i>"+newtonX+"<br /><hr><br />"); 
+					if (isNaN(newtonX)) {napisinjutn('Nešto nedefinisano, probaj druge vrednosti x0'); break;}
+					}
+					// Update x0 to start the process again                  
+					x0 = newtonX;
+				  }
+				  
+				  if (!haveWeFoundSolution) {
+					// If we weren't able to find a solution to within the 
+					// desired tolerance
+					napisinjutn("Nisam uspeo da za "+maxIterations+" iteracija nađem koren sa " +
+							"tolerancijom od " + epsilon+ "<br />");
+					napisinjutn("Poslednji izračunat koren je: " + newtonX +" <br /> <br /> <hr>");
+				  }
+				}
+				Newton_Raphson(x0);
+});
+
+window.onerror = function(msg, url, linenumber) {
+    alert('Greška: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+    return true;
+}
+</script>
+</body></html>

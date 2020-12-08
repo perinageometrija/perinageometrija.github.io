@@ -1,0 +1,119 @@
+
+    <style>table  {border: 0; } td {border:0;} tr {border:0;} 
+    .b {border:1px solid black}
+    </style>
+<script language="JavaScript">
+
+// JavaScript by B.G. Adams, Department of Mathematics and
+// Computer Science, Laurentian University.
+
+function writeTableLineit(n, x)
+    {
+   with (jQuery('#res'))
+   {
+      jQuery('#res').append("<tr class='b'>");
+      jQuery('#res').append("<td class='b'>" + n);
+      jQuery('#res').append("<td class='b'>" + x);
+   }
+}
+
+
+function writeDocHeadit(expression)
+{
+    jQuery('#res').empty();
+   with (jQuery('#res'))
+   {
+      jQuery('#res').append("<table>");
+      jQuery('#res').append("<tr class='b'>");
+      jQuery('#res').append("<th class='b' colspan=2>" + "x = " + expression);
+      jQuery('#res').append("<tr class='b'>");
+      jQuery('#res').append("<th class='b'>n");
+      jQuery('#res').append("<th class='b'>x");
+   }
+}
+
+
+function writeDocEndit()
+{
+    
+   with (jQuery('#res'))
+   {
+      jQuery('#res').append("</table>");
+   }
+}
+
+
+function iterate(param, expression, x0, eps1, iter2)
+{
+   // create a function g at run time with parameter given by param
+   // and body given by the string in Function
+   expression = expression.replace("ln", "log");
+   var g = function(x){var parser = math.parser();
+				  parser.set('x', x);
+				  var res = parser.eval(expression);
+				  return res;};
+ 
+   var x = parseFloat(x0);
+  var ep = parseFloat(eps1);
+   writeDocHeadit(expression);
+
+   // Now do fixed point iteration on this function to
+   // produce the solution of x = g(x)
+   var i;
+    var old;
+    writeTableLineit(0,x);
+   for (i=1; i <= iter2; i++)
+   {
+       old = x;
+      x = g(x);
+      writeTableLineit(i,x);
+       if (Math.abs(x-old)<ep) break;
+   }
+   
+   writeDocEndit();
+}
+    jQuery("#itm").click(function(){
+         
+        iterate('x',jQuery("input[name='expr']").val(), jQuery("input[name='x0']").val(), jQuery("input[name='iter1']").val(), jQuery("input[name='iter2']").val());
+    });
+</script>
+<!------------------------------------------------>
+
+<form method="post">
+<table border="2" class="a">
+
+<!-- 1st row of table -->
+
+<tbody><tr>
+<td><i>g(x)</i> 
+</td><td><input type="text" name="expr" value="" size="30">
+
+<!-- 2nd row of table -->
+
+</td></tr><tr>
+<td><i>x<sub>0</sub></i>
+</td><td><input type="text" name="x0" value="0.2">
+
+<!-- 3rd row of table -->
+
+</td></tr><tr>
+<td>ε
+</td><td><input type="text" name="iter1" value="0.001">
+
+<!-- 4th row of table -->
+
+</td></tr><tr>
+<td> Broj iteracija
+</td><td><input type="text" name="iter2" value="15">
+
+<!-- 5th row of table -->
+
+</td></tr><tr>
+<td colspan="2" align="center">
+<input type="button" value="Računaj" id="itm" onclick="iterate(&#39;x&#39;,form.expr.value, form.x0.value, form.iter1.value, form.iter2.value)">
+</td></tr></tbody></table>
+    <div id="res"></div>
+
+</form>
+    <script>
+</script>

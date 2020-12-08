@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script type="text/javascript">
+          function playSound(el,soundfile) {
+              var embed = document.getElementById("embed");
+              if (!embed) {
+                  var embed = document.createElement("embed");
+                      embed.id= "embed";
+                      embed.setAttribute("src", soundfile);
+                      embed.setAttribute("hidden", "true");
+                  el.appendChild(embed);
+              } else {
+                  embed.parentNode.removeChild(embed);
+              }
+          }
+      </script>
+  </head>
+<body style = "background-color:black; color:white; font-family:'Trebuchet MS';">
+    <span id="dummy" style= "padding-top:50%"onclick="playSound(this, 'tropics-sirena.mp3');">
+      <center><img src="sirena.png" name="Bottom-1" width="200px" style="margin-top:0%;"/><br /> Klikni na logo za instant sirenu iz Tropics-a</center>
+    </span>
+</body>
+</html>
