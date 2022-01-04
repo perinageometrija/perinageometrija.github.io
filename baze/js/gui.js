@@ -36,8 +36,10 @@ function execute(commands) {
 
 		tic();
 		outputElm.innerHTML = "";
-		for (var i=0; i<results.length; i++) {
-			outputElm.appendChild(tableCreate(results[i].columns, results[i].values));
+		if (results != undefined) {
+			for (var i=0; i<results.length; i++) {
+				outputElm.appendChild(tableCreate(results[i].columns, results[i].values));
+			}
 		}
 		toc("Prikazuje rezultate");
 	}
