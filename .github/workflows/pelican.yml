@@ -28,8 +28,15 @@ jobs:
         touch ./output/.nojekyll
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@4.1.8
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages # The branch the action should deploy to.
+        folder: output # The folder the action should deploy.
+        clean: true
+        clean-exclude: |
+            CNAME
       if: success()
-      env:
+      env: # Old config style
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BASE_BRANCH: master # The branch the action should deploy from.
         BRANCH: gh-pages # The branch the action should deploy to.
