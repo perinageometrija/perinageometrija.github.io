@@ -185,4 +185,4 @@ var form = document.createElement("form");
     }*/
 }
 savedbElm.addEventListener("click", savedb, true);
-pastebin.addEventListener("click", paste, true);
+// pastebin.addEventListener("click", paste, true);
